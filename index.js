@@ -89,12 +89,15 @@ class Counter {
   }
 }
 /*  const counter = new Counter(3)
- console.log(counter.countDown()) // returns 3
- console.log(counter.countDown())  // returns 2
- console.log(counter.countDown())  // returns 1
- console.log(counter.countDown())  // returns 0
- console.log(counter.countDown())  // returns 0 */
-
+ console.log('3', counter.countDown()) // returns 3
+ console.log(counter) // returns 3
+ console.log('2', counter.countDown())  // returns 2
+ console.log(counter)  // returns 1
+ console.log('1', counter.countDown())  // returns 0
+ console.log(counter)  // returns 0
+ console.log('0', counter.countDown())  // returns 0
+ console.log(counter)  // returns 0
+ */
 
 
 class Seasons {
@@ -102,7 +105,8 @@ class Seasons {
    * [Exercise 5A] Seasons creates a seasons object
    */
   constructor() {
-    this.seasons = ['spring', 'summer', 'fall', 'winter']
+    this.season = 0
+    this.seasons = ['spring', 'summer', 'fall', 'winter' ]
   }
 
   /**
@@ -117,10 +121,24 @@ class Seasons {
    * seasons.next() // returns "spring"
    * seasons.next() // returns "summer"
    */
-  next() {
-    // ✨ implement
+   next() {
+    this.season = this.season < this.seasons.length-1 ? ++this.season : 0 
+     return this.seasons[this.season] 
   }
+
+
 }
+/* const seasons = new Seasons()
+console.log(seasons.next())
+console.log(seasons.next())
+console.log(seasons.next())
+console.log(seasons.next())
+console.log(seasons.next())
+console.log(seasons.next())
+console.log(seasons.next())
+console.log(seasons.next())
+console.log(seasons.next()) */
+
 
 class Car {
   /**
