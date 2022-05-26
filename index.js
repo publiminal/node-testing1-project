@@ -7,8 +7,18 @@
  * trimProperties({ name: '  jane  ' }) // returns a new object { name: 'jane' }
  */
 function trimProperties(obj) {
-  // ✨ implement
+  const newObj = {...obj}
+  // const trimedObj = Object.fromEntries(Object.entries(newObj).map(arrItem =>  [arrItem[0], arrItem[1].trim()]) ) // Object.fromEntries()
+
+  for (const key in newObj) {
+    newObj[key]=newObj[key].trim();
+  }
+  // console.log('compare', obj == newObj)
+  return newObj
+
 }
+
+// console.log(trimProperties({name:'  andres  ', lastname:'  bernal'}))
 
 /**
  * [Exercise 2] trimPropertiesMutation trims in place the properties of an object
@@ -19,8 +29,16 @@ function trimProperties(obj) {
  * trimPropertiesMutation({ name: '  jane  ' }) // returns the object mutated in place { name: 'jane' }
  */
 function trimPropertiesMutation(obj) {
-  // ✨ implement
-}
+  // const trimedObj = Object.fromEntries(Object.entries(obj).forEach(arrItem =>  [arrItem[0], arrItem[1].trim()]) ) // Object.fromEntries()
+  for (const key in obj) {
+      obj[key]=obj[key].trim();
+    }
+    
+    return obj
+  }
+
+  // console.log(trimPropertiesMutation({name:'  andres  ', lastname:'  bernal'}))
+
 
 /**
  * [Exercise 3] findLargestInteger finds the largest integer in an array of objects { integer: 1 }
@@ -31,8 +49,19 @@ function trimPropertiesMutation(obj) {
  * findLargestInteger([{ integer: 1 }, { integer: 3 }, { integer: 2 }]) // returns 3
  */
 function findLargestInteger(integers) {
-  // ✨ implement
+
+  const values = integers => integers.map(el => Object.values(el)[0])
+  const arr = values(integers)
+  const nMax = Math.max(...arr)
+  // console.log('max', nMax)
+
+
+  // const _findLargestInteger = integers => _values =>  Math.max(..._values())
+  return nMax
 }
+
+// console.log('pio', findLargestInteger([{ integer: 1 }, { integer: 3 }, { integer: 2 }]) )
+
 
 class Counter {
   /**
@@ -40,7 +69,7 @@ class Counter {
    * @param {number} initialNumber - the initial state of the count
    */
   constructor(initialNumber) {
-    // ✨ initialize whatever properties are needed
+      this.counter = initialNumber
   }
 
   /**
@@ -56,16 +85,24 @@ class Counter {
    * counter.countDown() // returns 0
    */
   countDown() {
-    // ✨ implement
+     return  this.counter > 0 ? this.counter -- : this.counter  
   }
 }
+/*  const counter = new Counter(3)
+ console.log(counter.countDown()) // returns 3
+ console.log(counter.countDown())  // returns 2
+ console.log(counter.countDown())  // returns 1
+ console.log(counter.countDown())  // returns 0
+ console.log(counter.countDown())  // returns 0 */
+
+
 
 class Seasons {
   /**
    * [Exercise 5A] Seasons creates a seasons object
    */
   constructor() {
-    // ✨ initialize whatever properties are needed
+    this.seasons = ['spring', 'summer', 'fall', 'winter']
   }
 
   /**
